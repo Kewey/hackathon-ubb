@@ -12,7 +12,8 @@ export default class Home extends Component {
         }
 
         this.chatboxRef = React.createRef()
-        this.refreshChat = this.refreshChat.bind(this)
+        this.handleChange = this.handleChange.bind(this)
+        this.handleSubmit = this.handleSubmit.bind(this)
     }
     
     
@@ -31,10 +32,9 @@ export default class Home extends Component {
             chatRef.doc(new Date().getTime().toString()).set(chat)
             this.setState({message: ''})
         }
-        this.refreshChat()
     }
 
-    refreshChat() {
+    componentDidMount() {
         const chatRef = db.collection('chat').get()
         chatRef.then((querySnapshot) => {
             const doc = querySnapshot.docs.map((doc) => {
@@ -43,18 +43,18 @@ export default class Home extends Component {
             this.setState({chats: doc})
         })
     }
-
-    componentDidMount() {
-        this.refreshChat()
-
-        // const chatbox = this.chatboxRef.current
-    }
     
     render() {
         
-    const chatRef = db.collection('chat').get()
-    chatRef.
-
+    const chatRef = db.collection('chat')
+    chatRef.onSnapshot((query) => {
+        let chat =  []
+        query.forEach(doc => {
+            chat.push({id: doc.id, ...doc.data()})
+        })
+        this.setState({chats : chat})
+    })
+    
 
         return (
             <div>
