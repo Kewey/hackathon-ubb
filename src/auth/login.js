@@ -1,13 +1,21 @@
-import React, { Component } from 'react';
+import React from 'react';
+import SignIn from './SignIn'
+import SignOut from './SignOut'
+import {auth} from '../server/firebase'
+import { useAuthState } from 'react-firebase-hooks/auth';
 
-class Login extends Component {
-    render() {
-        return (
+
+
+function Login(props) { 
+    const [user] = useAuthState(auth);
+          return (
             <div>
                 <h1>Login</h1>
-            </div>
+             <section>
+             {user ? <SignOut /> : <SignIn />}
+           </section>
+           </div>
         );
     }
-}
 
 export default Login;
