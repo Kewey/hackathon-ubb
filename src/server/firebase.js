@@ -1,4 +1,5 @@
-import firebase from "firebase/app"
+import firebase from "firebase"
+import "firebase/firestore"
 
 var firebaseConfig = {
     apiKey: "AIzaSyCrdZO69Dg8_kph0CzfH6CrvCwUQVW1ChQ",
@@ -9,10 +10,7 @@ var firebaseConfig = {
     messagingSenderId: "291667563639",
 };
 
-class BDD {
-    constructor() {
-        firebase.initializeApp(firebaseConfig)
-    }
-}
+firebase.initializeApp(firebaseConfig)
+let db = firebase.firestore()
 
-export default BDD
+export default db

@@ -1,22 +1,22 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {BrowserRouter as Router, Route} from "react-router-dom";
+import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
 import './index.css';
-import App from './App';
-import Chat from './chat/index';
+import Home from './home/home';
+import Chat from './home/chatbox';
 import Soundbox from './soundbox/index';
-import Login from './auth/index';
+import Login from './auth/login';
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
-  <FirebaseContext.Provider value={new BDD()} >
-    <Router>
-      <Route exact path="/" component={App} />
+  <Router>
+    <Switch>
+      <Route path="/login" component={Login} />
+      <Route exact path="/" component={Home} />
       <Route path="/chat" component={Chat} />
       <Route path="/soundbox" component={Soundbox} />
-      <Route path="/login" component={Login} />
-    </Router>
-  </FirebaseContext.Provider>,
+    </Switch>
+  </Router>,
   document.getElementById('root')
 );
 
