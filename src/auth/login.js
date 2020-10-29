@@ -1,21 +1,16 @@
 import React from 'react';
+import { Redirect } from 'react-router-dom';
 import SignIn from './SignIn'
-import SignOut from './SignOut'
-import {auth} from '../server/firebase'
-import { useAuthState } from 'react-firebase-hooks/auth';
 
-
-
-function Login(props) { 
-    const [user] = useAuthState(auth);
-          return (
-            <div>
-                <h1>Login</h1>
-             <section>
-             {user ? <SignOut /> : <SignIn />}
-           </section>
-           </div>
-        );
-    }
+function Login(props) {
+    return (
+        <div>
+            <h1>Login</h1>
+            <section>
+                {props.user ? <Redirect to={props.location.state ? props.location.state.from.pathname : "/chat"} /> : <SignIn signInWithGoogle={props.signInWithGoogle}  />}
+            </section>
+        </div>
+    )
+}
 
 export default Login;

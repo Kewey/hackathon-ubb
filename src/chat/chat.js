@@ -1,16 +1,18 @@
 import React, { Component } from 'react'
-import db from '../server/firebase'
-import Chat from "./chatbox"
+import db, { auth } from '../server/firebase'
+import ChatBox from "./chatbox"
+import sendIcon from "../assets/icons/send.png"
+import logoUBB from "../assets/icons/logoUBB.png"
+import logoSP from "../assets/icons/logosp.png"
 
-export default class Home extends Component {
+export default class Chat extends Component {
     constructor(props) {
         super(props)
         this.state = {
+            user: auth.currentUser,
             chats: [],
             message: '',
-
         }
-
         this.chatboxRef = React.createRef()
         this.handleChange = this.handleChange.bind(this)
         this.handleSubmit = this.handleSubmit.bind(this)
@@ -28,7 +30,7 @@ export default class Home extends Component {
             const chatRef = db.collection('chat')
             const chat = {
                 message: this.state.message,
-                user: "Tom",
+                user: this.state.user.displayName,
             }
             chatRef.doc(new Date().getTime().toString()).set(chat)
             this.setState({message: ''})
@@ -58,23 +60,35 @@ export default class Home extends Component {
     }
     
     render() {
-
         return (
             <div>
-                <header>
-                    <h1>Home</h1>
-                    <a href="/login">Login</a>
-                    <a href="/soundbox">Soundbox</a>
-                    <a href="/chat">Chat</a>
-                </header>
+                <div className="highlight-match">
+                    <div className="row">
+                        <div className="col">
+                            <h5>UBB</h5>
+                            <img src={logoUBB} alt="Equipe UBB"/>
+                        </div>
+                        <div className="col">
+                            <strong>7 - 0</strong>
+                            <p>00:79:32</p>
+                        </div>
+                        <div className="col">
+                            <h5>Sélection Paloise</h5>
+                            <img src={logoSP} alt="Equipe Sélection Paloise"/>
+                        </div>
+                    </div>
+                </div>
                 <div className="chat">
                     <div className="chatbox" ref={this.chatboxRef}>
-                        <Chat chats={this.state.chats} />
+                        <ChatBox chats={this.state.chats} currentUser={this.state.user} />
                         <div ref={(el) => {this.lastMsg = el}}></div>
                     </div>
-                    <form onSubmit={this.handleSubmit}>
-                        <input type="text" name="message" id="message" value={this.state.message} onChange={this.handleChange} />
-                    </form>
+                    <div className="chat-footer">
+                        <form autocomplete="off" onSubmit={this.handleSubmit}>
+                            <input type="text" placeholder="Tapez votre message" name="message" id="message" value={this.state.message} onChange={this.handleChange} />
+                            <button><img src={sendIcon} alt="Envoyer"/></button>
+                        </form>
+                    </div>
                 </div>
             </div>
         )
