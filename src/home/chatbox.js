@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import db from '../server/firebase';
 import "./chatbox.css"
 
 class Chat extends Component {

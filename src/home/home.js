@@ -52,7 +52,9 @@ export default class Home extends Component {
     
     render() {
         
-        
+    const chatRef = db.collection('chat').get()
+    chatRef.
+
 
         return (
             <div>
