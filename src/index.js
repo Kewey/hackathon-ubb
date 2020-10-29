@@ -10,12 +10,14 @@ import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
   <Router>
-    <Switch>
-      <Route path="/login" component={Login} />
-      <Route exact path="/" component={Home} />
-      <Route path="/chat" component={Chat} />
-      <Route path="/soundbox" component={Soundbox} />
-    </Switch>
+    <div className="mobile">
+      <Switch>
+        <Route path="/login" component={Login} />
+        <Route exact path="/" component={Home} />
+        <Route path="/chat" component={Chat} />
+        <Route path="/soundbox" component={Soundbox} />
+      </Switch>
+    </div>
   </Router>,
   document.getElementById('root')
 );
