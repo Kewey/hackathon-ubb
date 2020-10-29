@@ -27,3 +27,17 @@ header {
   overflow-y: scroll;
   max-height: calc(100% - 40px);
 }
+
+@media (min-width: 380px) {
+  .mobile {
+    margin: 0 auto;
+    max-width: 375px;
+    height: 812px;
+    border: 5px solid #000;
+    border-radius: 20px;
+    overflow: hidden;
+  }
+  .chat {
+    height: 732px;
+  }
+}

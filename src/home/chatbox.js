@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import db from '../server/firebase';
 import "./chatbox.css"
 
 class Chat extends Component {
@@ -14,8 +13,7 @@ class Chat extends Component {
     render() {        
         const list = this.props.chats.map((msg) => (
             <div key={msg.id} className={msg.user === this.state.user ? "current" : null}>
-                <p>{msg.message}</p>
-                <span>{msg.user}</span>
+                <span>{msg.user} :</span><p>{msg.message}</p>
             </div>
         ))
 
