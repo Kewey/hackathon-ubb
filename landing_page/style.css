@@ -1,0 +1,252 @@
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    text-align: left;
+    font-size: 16px;
+
+}
+
+section{
+    max-width: 2560px;
+    background-repeat: no-repeat;
+}
+
+
+span{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+h1{
+
+    color: white;
+    font-size: 64px;
+
+}
+
+h2{
+    color: #691C33;
+    font-size: 30px;
+    transform: rotate(-2.57deg);
+}
+
+p{
+    color: #666666;
+    transform: rotate(-2.57deg);
+}
+
+
+/* Button */
+
+button{
+    font-size: 14px;
+    border-radius: 10px;
+    width: 229px;
+    height: 51px;
+    font-weight: bold;
+}
+
+.button-red{
+    border: none;
+    color: white;
+    background-color: #691C33;
+}
+
+.button-white{
+    color: #691C33;;
+    background-color:white;
+    border: 2px solid #691C33;
+}
+
+
+
+
+header {
+
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+   padding: 1em; 
+}
+
+header  ul{
+    padding: 0px;
+    margin:  0px;
+    list-style-type: none;
+}
+
+header li {
+    display: inline-block;
+    margin: 0;
+    padding: 0 1em;
+}
+
+footer{
+    height: 2em;
+    padding: 0 10em ;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #F2F2F2;
+}
+
+
+
+.soutien{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    padding-left: 10em;
+    height: 41em;
+     background-image: url("./img/89916569_3314838778545158_3502823744336822272_o\ 1.png");
+     background-size: 100%;
+ }
+
+
+.soutien button {
+    margin-top: 2em;
+}
+
+.pourquoi {
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    align-items: center;
+
+    margin-top: 5em;
+
+}
+
+.pourquoi img{
+    width: 15%;
+    max-width: 305px;
+}
+
+.pourquoi li{
+    margin: 1em 
+}
+.pourquoi button {
+    margin-top: 3em;
+    margin-right: 1.7em;
+}
+
+
+
+.comment {
+
+    padding: 7em 0;
+    text-align: center;
+    background-color: #F2F2F2;
+}
+
+.card-comment{
+    margin-top: 2em;
+    display: flex;
+    flex-direction: column;
+    max-width: 30%;
+}
+
+.devenir{
+    display: flex;
+    align-items: flex-end;
+    height: 18em;
+    padding-left: 10em;
+    background-image: url("./img/Mask\ Group.png");
+    background-size: 100%;
+}
+
+.devenir h1 {
+    margin-bottom: 0.8em;
+}
+
+.Avantages{
+    padding: 7em 0;
+    background-color: #F2F2F2;
+    text-align: center;
+}
+
+.Avantages div {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+   
+   max-width: 350px ;
+   max-height: 240px;
+   margin: 0 2em;
+   margin-top: 4em;
+   width: 33%;
+   height: 240px;
+   border-radius: 20px;
+   background-color: white;
+}
+
+.card-avantage{
+    display: flex;
+    flex-direction: column;
+}
+
+.mystere{
+    padding: 7em 0;
+    text-align: center;
+}
+
+.mystere img{
+    margin: 2em
+}
+
+.billet{
+    padding: 7em 0;
+    text-align: center;
+     background-color: #691C33; 
+}
+.billet h2 {
+    color: white;
+}
+
+.card-billet{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-radius: 20px;
+    background-color: white ;
+    max-width: 250px;
+    width: 40%;
+    height: 250px;
+    margin-top: 2em;
+    margin-bottom: 1em;
+    align-items: center;
+    
+
+}
+
+.prix{
+    color: #691C33;
+    font-size: 55px;
+}
+
+.card-billet button {
+    width: 80%;
+   margin: 1em;
+
+}
+
+
+
+.reseaux{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.sociaux img{
+    margin: 0 0.8em;
+
+}
+
+
