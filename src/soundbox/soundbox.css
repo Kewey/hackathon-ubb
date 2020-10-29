@@ -1,0 +1,22 @@
+form {
+    background-color: #822C41
+}
+.soundList {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    color:#822C41;
+}
+.soundList figure {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height:27vh;
+    width:40%;
+    background-color: white;
+    border-radius: 2%;
+    margin:1em;
+}
+.soundList audio {
+    display:none;
+}
