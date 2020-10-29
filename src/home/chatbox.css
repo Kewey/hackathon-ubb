@@ -1,26 +1,8 @@
 
 p {
-    display: inline-block;
-    margin-bottom: 0;
-    padding: 10px 15px;
-    border-radius: 8px;
-    background: #eeeeee;
-    max-width: 300px;
-}
-
-.current {
-    text-align: right;
-}
-
-.current p {
-    background-color: #500C32;
-    color: #fff;
+    display: inline;
 }
 
 span {
-    display: block;
-    font-size: 0.8rem;
-    margin-top: 5px;
-    margin-bottom: 10px;
     color: #aaa;
 }

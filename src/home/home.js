@@ -14,6 +14,7 @@ export default class Home extends Component {
         this.chatboxRef = React.createRef()
         this.handleChange = this.handleChange.bind(this)
         this.handleSubmit = this.handleSubmit.bind(this)
+        this.scrollToBottom = this.scrollToBottom.bind(this)
     }
     
     
@@ -35,26 +36,28 @@ export default class Home extends Component {
     }
 
     componentDidMount() {
-        const chatRef = db.collection('chat').get()
-        chatRef.then((querySnapshot) => {
-            const doc = querySnapshot.docs.map((doc) => {
-                return {id: doc.id, ...doc.data()}
+        const chatRef = db.collection('chat')
+        chatRef.onSnapshot((query) => {
+            let chat = [...this.state.chats]
+            query.docChanges().forEach(change => {
+                if (change.type === "added") {
+                    chat.push({id: change.doc.id ,...change.doc.data()})
+                }
             })
-            this.setState({chats: doc})
+            this.setState({chats : chat})
         })
+        this.scrollToBottom()
+    }
+
+    componentDidUpdate() {
+        this.scrollToBottom()
+    }
+
+    scrollToBottom = () => {
+        this.lastMsg.scrollIntoView({behavior: "smooth"})
     }
     
     render() {
-        
-    const chatRef = db.collection('chat')
-    chatRef.onSnapshot((query) => {
-        let chat =  []
-        query.forEach(doc => {
-            chat.push({id: doc.id, ...doc.data()})
-        })
-        this.setState({chats : chat})
-    })
-    
 
         return (
             <div>
@@ -66,7 +69,8 @@ export default class Home extends Component {
                 </header>
                 <div className="chat">
                     <div className="chatbox" ref={this.chatboxRef}>
-                        <Chat refreshChat={this.refreshChat} chats={this.state.chats} />
+                        <Chat chats={this.state.chats} />
+                        <div ref={(el) => {this.lastMsg = el}}></div>
                     </div>
                     <form onSubmit={this.handleSubmit}>
                         <input type="text" name="message" id="message" value={this.state.message} onChange={this.handleChange} />
