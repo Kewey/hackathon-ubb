@@ -39,11 +39,11 @@ function App() {
           </>
         }
         <Switch>
-          <Route path="/" component={Home} />
-          <Route path="/chat">
+          <Route path="/" component={Home} exact/>
+          <Route path="/chat" exact>
             <Chat user={user} />
           </Route>
-          <Route path="/soundbox">
+          <Route path="/soundbox" exact>
             <Soundbox user={user} />
           </Route>
           <Redirect to="/" />

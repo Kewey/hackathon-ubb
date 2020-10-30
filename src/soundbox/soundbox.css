@@ -4,16 +4,20 @@
     flex-wrap: wrap;
     color:#822C41;
 }
+
 .soundList figure {
+    text-align: center;
+    font-weight: bold;
     display: flex;
     justify-content: center;
     align-items: center;
-    height:27vh;
+    height: 150px;
     width:40%;
     background-color: white;
-    border-radius: 2%;
+    border-radius: 10px;
     margin:1em;
 }
+
 .soundList audio {
     display:none;
 }
