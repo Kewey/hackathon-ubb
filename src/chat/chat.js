@@ -1,15 +1,17 @@
 import React, { Component } from 'react'
-import db, { auth } from '../server/firebase'
+import db from '../server/firebase'
 import ChatBox from "./chatbox"
 import sendIcon from "../assets/icons/send.png"
 import logoUBB from "../assets/icons/logoUBB.png"
 import logoSP from "../assets/icons/logosp.png"
+import UserProvider, { UserContext } from '../providers/UserProvider'
+
 
 export default class Chat extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            user: auth.currentUser,
+            user: this.props.user,
             chats: [],
             message: '',
         }
@@ -18,7 +20,6 @@ export default class Chat extends Component {
         this.handleSubmit = this.handleSubmit.bind(this)
         this.scrollToBottom = this.scrollToBottom.bind(this)
     }
-    
     
     handleChange = e => {
         this.setState({[e.target.name]: e.target.value})
@@ -37,6 +38,10 @@ export default class Chat extends Component {
         }
     }
 
+    scrollToBottom = () => {
+        this.lastMsg.scrollIntoView({behavior: "smooth"})
+    }
+
     componentDidMount() {
         const chatRef = db.collection('chat')
         chatRef.onSnapshot((query) => {
@@ -53,10 +58,6 @@ export default class Chat extends Component {
 
     componentDidUpdate() {
         this.scrollToBottom()
-    }
-
-    scrollToBottom = () => {
-        this.lastMsg.scrollIntoView({behavior: "smooth"})
     }
     
     render() {
@@ -84,7 +85,7 @@ export default class Chat extends Component {
                         <div ref={(el) => {this.lastMsg = el}}></div>
                     </div>
                     <div className="chat-footer">
-                        <form autocomplete="off" onSubmit={this.handleSubmit}>
+                        <form autoComplete="off" onSubmit={this.handleSubmit}>
                             <input type="text" placeholder="Tapez votre message" name="message" id="message" value={this.state.message} onChange={this.handleChange} />
                             <button><img src={sendIcon} alt="Envoyer"/></button>
                         </form>
@@ -94,3 +95,6 @@ export default class Chat extends Component {
         )
     }
 }
+
+UserContext.contextType = UserProvider
+
