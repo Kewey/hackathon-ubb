@@ -7,8 +7,10 @@
 body{
     text-align: left;
     font-size: 16px;
+    font-family: "Gotham";
 
 }
+
 
 section{
     max-width: 2560px;
@@ -26,6 +28,7 @@ h1{
 
     color: white;
     font-size: 64px;
+
 
 }
 
@@ -98,14 +101,24 @@ footer{
 
 
 .soutien{
+    padding: 10em;
     display: flex;
     justify-content: center;
     flex-direction: column;
-    padding-left: 10em;
-    height: 41em;
      background-image: url("./img/89916569_3314838778545158_3502823744336822272_o\ 1.png");
      background-size: 100%;
+
  }
+
+ .container-titre{
+
+     display: flex;
+     flex-direction: column;
+     width: 60%;
+     margin-left: 10em;
+ }
+
+ 
 
 
 .soutien button {
@@ -149,6 +162,10 @@ footer{
     display: flex;
     flex-direction: column;
     max-width: 30%;
+    justify-content: space-evenly;
+}
+.card-comment div {
+    
 }
 
 .devenir{
@@ -170,7 +187,11 @@ footer{
     text-align: center;
 }
 
-.Avantages div {
+.sous-titre{
+    margin-top: 2em;
+}
+
+.card-avantage{
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
@@ -184,11 +205,6 @@ footer{
    height: 240px;
    border-radius: 20px;
    background-color: white;
-}
-
-.card-avantage{
-    display: flex;
-    flex-direction: column;
 }
 
 .mystere{
@@ -206,6 +222,10 @@ footer{
      background-color: #691C33; 
 }
 .billet h2 {
+    color: white;
+}
+.texte-blanc{
+    margin-top: 2em;
     color: white;
 }
 
@@ -250,3 +270,24 @@ footer{
 }
 
 
+@media screen and (max-width: 880px) {
+    .soutien{
+        padding: 0;
+         font-size: 50px;
+     }
+
+     .container-titre{
+         margin-left: 0;
+     }
+
+     h1{
+         margin-left: 0;
+         font-size: 48px;
+     }
+
+
+     .devenir h1 {
+         font-size: 36px;
+        margin-bottom: 4.8em;
+    }
+ }
