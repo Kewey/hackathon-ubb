@@ -1,11 +1,24 @@
+.soundForm {
+    padding-top:30px;
+    height: 100vh;
+    color: white;
+}
+.soundForm .UBB-title {
+    font-size:1em;
+    display: block;
+    margin:0;
+    color:white;
+}
+
 .soundList {
+    padding-top:10px;
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
     color:#822C41;
 }
 
-.soundList figure {
+.soundList label {
     text-align: center;
     font-weight: bold;
     display: flex;
@@ -14,10 +27,45 @@
     height: 150px;
     width:40%;
     background-color: white;
-    border-radius: 10px;
+    border-radius: 24px;
     margin:1em;
+    cursor:pointer;
+    word-spacing: 100vw;
 }
 
-.soundList audio {
+.soundList audio, input[type=radio]{
     display:none;
+}
+
+
+
+input[type=radio]:checked + label {
+    color: white;
+    background-color:#822C41;
+}
+.soundData {
+    text-align: center;
+}
+.soundData .btn {
+    text-align: center;
+    margin:0 auto;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+    width:80%;
+    background-color: white;
+    border-radius: 10px;
+    color:#822C41;
+    border-width: 0;
+    border-style: outset;
+    cursor:pointer;
+    border-image: initial;
+}
+.soundData .btn:disabled {
+    background-color: rgb(228, 228, 228);
+    color:grey;
+    border-style: outset;
+    cursor:initial;
 }
