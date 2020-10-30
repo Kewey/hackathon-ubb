@@ -1,12 +1,9 @@
 import React from 'react';
+import { signInWithGoogle } from '../server/firebase';
 
-function SignIn(props) {
-  login() {
-    props.signInWithGoogle
-  }
-  
+function SignIn(props) {  
   return (
-    <button onClick={login()}>Se connecter avec Google</button>
+    <button onClick={signInWithGoogle}>Se connecter avec Google</button>
   )
 }
 

@@ -5,12 +5,13 @@ import "./soundbox.css"
 class Soundbox extends Component {
     constructor(props) {
         super(props)
-        this.myRef = React.createRef();
         this.state = {
+            user: this.props.user,
             soundList: [],
             voteList: [],
             maxVote: ''
         }
+        this.myRef = React.createRef();
         this.onValueChange = this.onValueChange.bind(this);
         this.formSubmit = this.formSubmit.bind(this);
     }
@@ -31,7 +32,7 @@ class Soundbox extends Component {
         const voteRef = db.collection('vote')
         const vote = {
             vote: this.state.selectedOption,
-            user: "Tom",
+            user: this.state.user.displayName,
         }
         voteRef.doc(new Date().getTime().toString()).set(vote)
         this.setState({
@@ -110,25 +111,25 @@ class Soundbox extends Component {
             </figure>
             )
         )
-        const voteList = this.state.voteList.map(vote =>
+        this.state.voteList.map(vote =>
             (vote.vote)
         )
         const isEnabled = this.state.selectedOption;
         return (
         <>
-        <form onSubmit={this.formSubmit}>
-        <div className="soundList">{soundList}
-        </div>
-        <div>
-          Vous avez sélectionné le bruitage numéro : {this.state.selectedOption}
-        </div>
-        <button ref="btn" disabled={!isEnabled} className="btn btn-default" type="submit">
-          Voter !
-        </button>
-      
-        </form>
-        <p>Liste votes {this.state.voteList}</p>
-        <p>Le bruitage le plus voté est le numéro : {this.state.maxVote}</p>
+            <form onSubmit={this.formSubmit}>
+            <div className="soundList">{soundList}
+            </div>
+            <div>
+            Vous avez sélectionné le bruitage numéro : {this.state.selectedOption}
+            </div>
+            <button ref="btn" disabled={!isEnabled} className="btn btn-default" type="submit">
+            Voter !
+            </button>
+        
+            </form>
+            <p>Liste votes {this.state.voteList}</p>
+            <p>Le bruitage le plus voté est le numéro : {this.state.maxVote}</p>
         </>
         )
     }
